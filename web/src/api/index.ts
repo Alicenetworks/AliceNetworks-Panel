@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 import type {
   LoginResponse,
   NodeCreateRequest,
@@ -32,6 +33,9 @@ const api = axios.create({
   timeout: 10000,
 })
 
+// 防止重复跳转
+let isRedirecting = false
+
 // 请求拦截器
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
@@ -45,9 +49,12 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 && !isRedirecting) {
+      isRedirecting = true
       localStorage.removeItem('token')
-      window.location.href = '/login'
+      router.push({ name: 'login' }).finally(() => {
+        isRedirecting = false
+      })
     }
     return Promise.reject(error)
   }

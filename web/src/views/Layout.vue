@@ -221,8 +221,25 @@ const currentTitle = computed(() => {
   return menu?.label || '仪表盘'
 })
 
-const handleMenuSelect = (key: string) => {
-  router.push({ name: key })
+// 防止快速重复点击
+let isNavigating = false
+
+const handleMenuSelect = async (key: string) => {
+  if (isNavigating || key === currentMenu.value) return
+  isNavigating = true
+  try {
+    await router.push({ name: key })
+  } catch (err: any) {
+    // 忽略 NavigationDuplicated 错误
+    if (err.name !== 'NavigationDuplicated') {
+      console.error('Navigation error:', err)
+    }
+  } finally {
+    // 延迟重置，防止过快点击
+    setTimeout(() => {
+      isNavigating = false
+    }, 100)
+  }
 }
 
 const handleUserAction = async (key: string) => {

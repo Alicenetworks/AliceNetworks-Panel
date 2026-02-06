@@ -112,4 +112,15 @@ router.beforeEach((to, _from, next) => {
   }
 })
 
+// 路由错误处理
+router.onError((error) => {
+  // 处理懒加载错误 - 可能是网络问题或资源更新
+  if (error.message.includes('Failed to fetch dynamically imported module') ||
+      error.message.includes('Loading chunk') ||
+      error.message.includes('Loading CSS chunk')) {
+    console.warn('Chunk loading error, reloading page...')
+    window.location.reload()
+  }
+})
+
 export default router

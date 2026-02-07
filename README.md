@@ -279,10 +279,48 @@ gost-panel/
 - [问题反馈](https://github.com/AliceNetworks/gost-panel/issues)
 - [更新日志](https://github.com/AliceNetworks/gost-panel/releases)
 
-## 许可证
+## Stargazers
 
-[MIT License](https://github.com/AliceNetworks/gost-panel/blob/main/LICENSE)
+感谢所有 Star 支持者！
+
+[![Star History Chart](https://api.star-history.com/svg?repos=AliceNetworks/gost-panel&type=Date)](https://star-history.com/#AliceNetworks/gost-panel&Date)
 
 ## 贡献
 
 欢迎提交 [Pull Request](https://github.com/AliceNetworks/gost-panel/pulls)。重大更改请先开 [Issue](https://github.com/AliceNetworks/gost-panel/issues) 讨论。
+
+## 免责声明
+
+1. 本项目仅供学习交流和合法用途，使用者必须遵守所在地区的法律法规。
+2. 本项目是 [GOST v3](https://github.com/go-gost/gost) 的管理面板，不对 GOST 核心功能负责。
+3. 使用本软件所产生的任何直接或间接后果，由使用者自行承担，项目开发者不承担任何责任。
+4. 严禁将本项目用于任何违法违规用途，包括但不限于非法代理、翻墙、数据窃取等。
+5. 如果您不同意以上条款，请勿使用本项目。
+
+## 许可证
+
+本项目基于 [MIT License](LICENSE) 开源。
+
+```
+MIT License
+
+Copyright (c) 2025 AliceNetworks
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

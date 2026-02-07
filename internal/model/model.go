@@ -44,6 +44,7 @@ type Node struct {
 	TLSCertFile string `gorm:"size:255" json:"tls_cert_file"`
 	TLSKeyFile  string `gorm:"size:255" json:"tls_key_file"`
 	TLSSNI      string `gorm:"size:255" json:"tls_sni"`
+	TLSALPN     string `gorm:"size:255" json:"tls_alpn"`                     // TLS ALPN 协议列表 (逗号分隔)
 	// WebSocket 配置
 	WSPath string `gorm:"size:255" json:"ws_path"`
 	WSHost string `gorm:"size:255" json:"ws_host"`

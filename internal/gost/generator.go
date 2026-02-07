@@ -3,6 +3,7 @@ package gost
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/AliceNetworks/gost-panel/internal/model"
 )
@@ -471,6 +472,17 @@ func (g *ConfigGenerator) generateTLSConfig(node *model.Node) map[string]interfa
 	}
 	if node.TLSSNI != "" {
 		tls["serverName"] = node.TLSSNI
+	}
+	if node.TLSALPN != "" {
+		alpnList := []string{}
+		for _, a := range strings.Split(node.TLSALPN, ",") {
+			if trimmed := strings.TrimSpace(a); trimmed != "" {
+				alpnList = append(alpnList, trimmed)
+			}
+		}
+		if len(alpnList) > 0 {
+			tls["alpn"] = alpnList
+		}
 	}
 
 	return tls

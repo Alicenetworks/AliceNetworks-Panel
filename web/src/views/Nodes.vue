@@ -188,6 +188,34 @@
               </n-form-item>
             </template>
 
+            <!-- KCP 参数 -->
+            <template v-if="form.transport === 'kcp'">
+              <n-divider>KCP 参数</n-divider>
+              <n-form-item label="MTU">
+                <n-input-number v-model:value="kcpParams.mtu" :min="64" :max="9000" :default-value="1350" style="width: 150px" />
+              </n-form-item>
+              <n-form-item label="发送窗口">
+                <n-input-number v-model:value="kcpParams.sndwnd" :min="1" :max="65535" :default-value="1024" style="width: 150px" />
+              </n-form-item>
+              <n-form-item label="接收窗口">
+                <n-input-number v-model:value="kcpParams.rcvwnd" :min="1" :max="65535" :default-value="1024" style="width: 150px" />
+              </n-form-item>
+              <n-form-item label="数据分片">
+                <n-input-number v-model:value="kcpParams.datashard" :min="0" :max="256" :default-value="10" style="width: 150px" />
+              </n-form-item>
+              <n-form-item label="校验分片">
+                <n-input-number v-model:value="kcpParams.parityshard" :min="0" :max="256" :default-value="3" style="width: 150px" />
+              </n-form-item>
+            </template>
+
+            <!-- TLS 高级选项 -->
+            <template v-if="['tls', 'wss', 'h2', 'quic', 'grpc', 'mwss', 'http3', 'dtls'].includes(form.transport)">
+              <n-divider>TLS 高级选项</n-divider>
+              <n-form-item label="ALPN">
+                <n-input v-model:value="form.tls_alpn" placeholder="h2,http/1.1 (逗号分隔)" />
+              </n-form-item>
+            </template>
+
             <!-- 限速 -->
             <n-divider>限速配置</n-divider>
             <n-form-item label="速度限制">
@@ -530,6 +558,7 @@ const defaultForm = () => ({
   tls_sni: '',
   ws_path: '',
   ws_host: '',
+  tls_alpn: '',
   speed_limit: 0,
   conn_rate_limit: 0,
   dns_server: '',
@@ -541,6 +570,14 @@ const defaultForm = () => ({
 })
 
 const form = ref(defaultForm())
+
+const kcpParams = ref({
+  mtu: 1350,
+  sndwnd: 1024,
+  rcvwnd: 1024,
+  datashard: 10,
+  parityshard: 3,
+})
 
 // 计算属性
 const quotaGB = computed({
